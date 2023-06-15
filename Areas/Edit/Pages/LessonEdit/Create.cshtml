@@ -1,0 +1,61 @@
+﻿@page
+@model DiplomaWork.Areas.Edit.Pages.LessonEdit.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Lesson</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Lesson.ID" class="control-label"></label>
+                <input asp-for="Lesson.ID" disabled value="@Guid.NewGuid().ToString()" class="form-control" />
+                <span asp-validation-for="Lesson.ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.DayOfWeek" class="control-label"></label>
+                <select asp-for="Lesson.DayOfWeek" class="form-control"></select>
+                <span asp-validation-for="Lesson.DayOfWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.Number" class="control-label"></label>
+                <input asp-for="Lesson.Number" class="form-control" />
+                <span asp-validation-for="Lesson.Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.SubjectID" class="control-label"></label>
+                <select asp-for="Lesson.SubjectID" class ="form-control" asp-items="ViewBag.SubjectID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.TeacherID" class="control-label"></label>
+                <select asp-for="Lesson.TeacherID" class ="form-control" asp-items="ViewBag.TeacherID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.ClassroomID" class="control-label"></label>
+                <select asp-for="Lesson.ClassroomID" class ="form-control" asp-items="ViewBag.ClassroomID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lesson.GroupID" class="control-label"></label>
+                <select asp-for="Lesson.GroupID" class ="form-control" asp-items="ViewBag.GroupID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

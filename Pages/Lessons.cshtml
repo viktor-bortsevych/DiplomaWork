@@ -1,0 +1,67 @@
+﻿@page
+@model DiplomaWork.Pages.LessonsModel
+
+@{
+    ViewData["Title"] = "Lessons";
+}
+
+<h1>Lessons</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].DayOfWeek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Group)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Teacher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Classroom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lesson[0].Subject)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Lesson.OrderBy(l => l.DayOfWeek))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DayOfWeek)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Group.Name)
+                </td>
+                @{
+                    string teacherName = $"{item.Teacher.FirstName} {item.Teacher.LastName}";
+                }
+
+                <td>
+                    @Html.DisplayFor(modelItem => teacherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classroom.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject.Name)
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
